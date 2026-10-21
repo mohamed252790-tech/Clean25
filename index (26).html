@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEAN 25 | Nettoyage Intérieur Automobile</title>
+    <style>
+        :root {
+            --bg-body: #121829;
+            --bg-card: #1c2438;
+            --bg-inner-card: #141c2e;
+            --accent-green: #00e676;
+            --accent-blue: #3b82f6;
+            --text-white: #ffffff;
+            --text-gray: #b0bec5;
+            --border-color: #2e3b52;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            line-height: 1.6;
+            padding-top: 75px;
+            padding-bottom: 80px;
+            font-size: 1.05rem;
+        }
+
+        /* Barre de navigation fixe en haut */
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 65px;
+            background-color: rgba(18, 24, 41, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(46, 59, 82, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 2000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-left-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        /* Logo image */
+        .nav-logo-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+        }
+
+        .nav-logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-brand span {
+            color: var(--accent-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            list-style: none;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-left: 10px;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Hero / En-tête avec effet néon sur le titre */
+        .hero {
+            text-align: center;
+            padding: 30px 20px 35px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 
+                         0 0 20px rgba(59, 130, 246, 0.4), 
+                         0 0 30px rgba(0, 230, 118, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(0, 230, 118, 0.8), 
+                         0 0 20px rgba(0, 230, 118, 0.5);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            color: var(--accent-green);
+            margin-bottom: 18px;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .badge-city {
+            display: inline-block;
+            background: #142e28;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            padding: 8px 24px;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .scroll-discover {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+        .bounce-arrow {
+            display: inline-block;
+            margin-top: 15px;
+            animation: bounce 1.8s infinite;
+        }
+
+        .bounce-arrow svg {
+            width: 58px;
+            height: 58px;
+            fill: var(--accent-green);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(16px); }
+            60% { transform: translateY(8px); }
+        }
+
+        .container {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 900;
+            margin: 35px 0 22px;
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 2px solid var(--accent-green);
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 8px;
+        }
+
+        .main-card {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-green);
+            border-radius: 22px;
+            padding: 28px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-card h3 {
+            font-size: 1.9rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .main-card .desc {
+            font-size: 0.98rem;
+            color: var(--text-gray);
+            margin: 10px 0 18px;
+        }
+
+        .price-box {
+            text-align: center;
+            margin: 22px 0 25px;
+        }
+
+        .price-amount {
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--accent-green);
+        }
+
+        .btn-reserve {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-green);
+            border: none;
+            color: #0a0e1a;
+            text-align: center;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-decoration: none;
+            margin-bottom: 25px;
+        }
+
+        .included-title {
+            font-size: 0.95rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+        }
+
+        .included-list {
+            list-style: none;
+        }
+
+        .included-list li {
+            font-size: 0.95rem;
+            color: var(--text-white);
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .included-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .option-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 14px;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .price-tag-green {
+            background: rgba(0, 230, 118, 0.2);
+            color: var(--accent-green);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 1rem;
+            border: 1px solid var(--accent-green);
+        }
+
+        .section-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin: -10px 0 22px;
+        }
+
+        .alert-box {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-green);
+            border-radius: 22px;
+            padding: 24px;
+            margin: 35px 0;
+        }
+
+        .alert-title {
+            color: #ccff00;
+            font-size: 1.25rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .info-card {
+            background: var(--bg-inner-card);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card-title {
+            color: var(--accent-green);
+            font-size: 0.95rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+        }
+
+        .info-card-text {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .faq-container {
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .faq-button {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 16px 20px;
+            text-align: left;
+            color: var(--accent-blue);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: var(--bg-inner-card);
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            padding: 0 20px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 250px;
+            padding: 14px 20px 18px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 22px;
+            padding: 28px 22px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .contact-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+
+        .btn-contact-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 15px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--text-white);
+            text-decoration: none;
+            margin-bottom: 14px;
+        }
+
+        .btn-insta-gradient {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+        }
+
+        .btn-whatsapp-full {
+            background: #25d366;
+            color: #ffffff;
+        }
+
+        .btn-sms-full {
+            background: #007aff;
+        }
+
+        .btn-contact-action svg {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .floating-btns {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .float-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+        }
+
+        .float-btn.sms { background: #007aff; }
+
+        .float-btn.whatsapp-inverted {
+            width: 48px;
+            height: 48px;
+            background: #25d366;
+            border-radius: 50%;
+        }
+
+        .float-btn.insta {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+        }
+
+        .float-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 10px 15px;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="top-navbar">
+        <div class="nav-left-group">
+            <a href="#top" class="nav-logo-link" title="CLEAN 25">
+                <div class="nav-logo-box">
+                    <img src="data:image/webp;base64,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bXA6aWlkOmM2NWMwMzI4LTU0ODQtNDQ0MC04NDAwLWZlOWUzZTFjNTgxYWxyZWxhdGlvbnNoaXBocGFyZW50T2YAAAHianVtYgAAAEFqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmFjdGlvbnMudjIAAAAAGGMyc2ja7dDso/ZImgTrmL1EzmymAAABmWNib3KiZ2FjdGlvbnOComZhY3Rpb25rYzJwYS5vcGVuZWRqcGFyYW1ldGVyc6FraW5ncmVkaWVudHOBomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAoogg5wTM+7XmDs88HZyblAQGTZQoR2Qpx0YQNEzaQ6aRmYWN0aW9ueB1jb20uYW50aHJvcGljLmNsYXVkZS5wcm92aWRlZGpwYXJhbWV0ZXJzoXgfY29tLmFudGhyb3BpYy5vcmlnaW4tY29uZmlkZW5jZWd1bmtub3dua2Rlc2NyaXB0aW9ueGZDbGF1ZGUgcHJvdmlkZWQgdGhpcyBmaWxlIGF0IHRoZSByZXF1ZXN0IG9mIGEgdXNlciBhbmQgbWF5IGhhdmUgY3JlYXRlZCBvciBtb2RpZmllZCB0aGUgZmlsZSBjb250ZW50cy5tc29mdHdhcmVBZ2VudKFkbmFtZWZDbGF1ZGVyYWxsQWN0aW9uc0luY2x1ZGVk9QAAAMhqdW1iAAAAQGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaGFzaC5kYXRhAAAAABhjMnNo/IKFWYIPqDyvZNUved24SQAAAIBjYm9ypWNhbGdmc2hhMjU2Y3BhZEwAAAAAAAAAAAAAAABkaGFzaFggFeIUhpL64OdvNXy22HFeadrhO754nAN6Hog61ZeVNv1kbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQZDOpmbGVuZ3RoGRaHAAACPmp1bWIAAAAnanVtZGMyY2wAEQAQgAAAqgA4m3EDYzJwYS5jbGFpbS52MgAAAAIPY2JvcqVjYWxnZnNoYTI1NmlzaWduYXR1cmV4TXNlbGYjanVtYmY9L2MycGEvdXJuOmMycGE6OTUwMzMyNGMtNThlZC00N2NkLWFiMzgtMmE3ZjgwMTNmNjVlL2MycGEuc2lnbmF0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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9lhAQ7L4Ra6N4lrRVhdOlLC4iH6bZmU5cRCb71x1P7mQr1SAMmOMiKiU65zqoKOlvUwQYDXiwBLKf75+8UAPHBxNHwA=" alt="Logo CLEAN 25">
+                </div>
+            </a>
+            <a href="#top" class="nav-brand">CLEAN <span>25</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#top">Accueil</a></li>
+            <li><a href="#prestation">Prestation</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="top">
+        <h1>CLEAN <span>25</span></h1>
+        <div class="subtitle">Nettoyage intérieur automobile</div>
+        <div class="tagline">« Votre satisfaction, ma priorité. »</div>
+        <div class="badge-city">MONTBÉLIARD</div>
+        
+        <div class="scroll-discover">Faites défiler pour découvrir</div>
+        <div class="bounce-arrow">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <div class="section-title" id="prestation">Prestation proposée</div>
+
+        <div class="main-card">
+            <h3>Nettoyage Standard</h3>
+            <p class="desc">La formule essentielle et complète pour votre habitacle.</p>
+            
+            <div class="price-box">
+                <div class="price-amount">50€</div>
+            </div>
+
+            <a href="#contact" class="btn-reserve">Réserver maintenant</a>
+
+            <div class="included-title">CE QUI EST INCLUS DANS LE TARIF :</div>
+            <ul class="included-list">
+                <li>Aspiration complète de l'habitacle et du coffre</li>
+                <li>Nettoyage des plastiques / cuirs et du tableau de bord</li>
+                <li>Nettoyage des tapis</li>
+                <li>Cadres & contours de portes</li>
+                <li>Vitres latérales int./ext.</li>
+            </ul>
+        </div>
+
+        <div class="section-title" id="tarifs">OPTION DE PERSONNALISATION</div>
+        <p class="section-desc">Sélectionnez votre option supplémentaire pour parfaire votre prestation :</p>
+
+        <div class="option-item">
+            <span>🧽 Shampouinage des sièges</span>
+            <span class="price-tag-green">7 € / siège</span>
+        </div>
+
+        <div class="section-title" style="margin-top: 35px;">SUPPLÉMENTS APPLICABLES</div>
+        <p class="section-desc">Facturés uniquement en fonction de l'état/type de véhicule :</p>
+
+        <div class="option-item">
+            <span>🐾 Poils d'animaux</span>
+            <span class="price-tag-green">+10€</span>
+        </div>
+        <div class="option-item">
+            <span>🚗 SUV / 6 ou 7 places</span>
+            <span class="price-tag-green">+10€</span>
+        </div>
+
+        <div class="alert-box">
+            <div class="alert-title">⚠️ INFORMATIONS IMPORTANTES POUR L'INTERVENTION</div>
+
+            <div class="info-card">
+                <div class="info-card-title">📍 LIEU UNIQUE :</div>
+                <div class="info-card-text">Les prestations s'effectuent uniquement à mon adresse.</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-card-title">📦 PRÉPARATION :</div>
+                <div class="info-card-text">Merci de vider l'intégralité de vos affaires personnelles du véhicule avant votre arrivée.</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-card-title">🗑️ DÉCHETS :</div>
+                <div class="info-card-text">Je prends entièrement en charge la gestion et l'évacuation des déchets trouvés à bord.</div>
+            </div>
+        </div>
+
+        <div class="faq-container" id="faq">
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleFaq(this)">
+                    <span>Quels véhicules nettoyez-vous ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    CLEAN25 propose le nettoyage intérieur de tous types de voitures, toutes marques et tous modèles.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleFaq(this)">
+                    <span>Combien de temps dure une prestation ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    La durée du nettoyage varie selon le véhicule et son état. Une estimation du temps de nettoyage pourra être communiquée avant le rendez-vous.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleFaq(this)">
+                    <span>Comment prendre rendez-vous ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Pour prendre rendez-vous, vous pouvez me contacter sur Instagram, WhatsApp ou directement par message via mon numéro de téléphone indiqué sur le site.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleFaq(this)">
+                    <span>Quels moyens de paiement acceptez-vous ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Le paiement est accepté par PayPal ou en espèces.
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title" id="contact">Réservation & Contact</div>
+
+        <div class="contact-box">
+            <p class="contact-desc">Réservation uniquement par message via Instagram ou au numéro de téléphone (SMS ou WhatsApp uniquement).</p>
+
+            <a href="https://instagram.com/clean.drive.25" class="btn-contact-action btn-insta-gradient" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Instagram : clean.drive.25
+            </a>
+
+            <a href="https://wa.me/33745454154?text=Bonjour%2C%20afin%20de%20vous%20proposer%20un%20cr%C3%A9neau%20adapt%C3%A9%2C%20pourriez-vous%20m%E2%80%99indiquer%20le%20mod%C3%A8le%20de%20votre%20v%C3%A9hicule%2C%20si%20vous%20souhaitez%20ajouter%20l%E2%80%99option%20shampoing%20des%20si%C3%A8ges%20et%20si%20votre%20v%C3%A9hicule%20pr%C3%A9sente%20des%20poils%20d%E2%80%99animaux%20%3F" class="btn-contact-action btn-whatsapp-full" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                WhatsApp : 07 45 45 41 54
+            </a>
+
+            <a href="sms:0745454154?body=Bonjour%2C%20afin%20de%20vous%20proposer%20un%20cr%C3%A9neau%20adapt%C3%A9%2C%20pourriez-vous%20m%E2%80%99indiquer%20le%20mod%C3%A8le%20de%20votre%20v%C3%A9hicule%2C%20si%20vous%20souhaitez%20ajouter%20l%E2%80%99option%20shampoing%20des%20si%C3%A8ges%20et%20si%20votre%20v%C3%A9hicule%20pr%C3%A9sente%20des%20poils%20d%E2%80%99animaux%20%3F" class="btn-contact-action btn-sms-full">
+                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+                SMS : 07 45 45 41 54
+            </a>
+        </div>
+
+    </div>
+
+    <div class="floating-btns">
+        <a href="sms:0745454154?body=Bonjour%2C%20afin%20de%20vous%20proposer%20un%20cr%C3%A9neau%20adapt%C3%A9%2C%20pourriez-vous%20m%E2%80%99indiquer%20le%20mod%C3%A8le%20de%20votre%20v%C3%A9hicule%2C%20si%20vous%20souhaitez%20ajouter%20l%E2%80%99option%20shampoing%20des%20si%C3%A8ges%20et%20si%20votre%20v%C3%A9hicule%20pr%C3%A9sente%20des%20poils%20d%E2%80%99animaux%20%3F" class="float-btn sms" title="Envoyer un SMS">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+        </a>
+        <a href="https://wa.me/33745454154?text=Bonjour%2C%20afin%20de%20vous%20proposer%20un%20cr%C3%A9neau%20adapt%C3%A9%2C%20pourriez-vous%20m%E2%80%99indiquer%20le%20mod%C3%A8le%20de%20votre%20v%C3%A9hicule%2C%20si%20vous%20souhaitez%20ajouter%20l%E2%80%99option%20shampoing%20des%20si%C3%A8ges%20et%20si%20votre%20v%C3%A9hicule%20pr%C3%A9sente%20des%20poils%20d%E2%80%99animaux%20%3F" class="float-btn whatsapp-inverted" target="_blank" title="WhatsApp">
+            <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #ffffff;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+        <a href="https://instagram.com/clean.drive.25" class="float-btn insta" target="_blank" title="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+    </div>
+
+    <footer>
+        © 2026 CLEAN25 | Montbéliard
+    </footer>
+
+    <script>
+        function toggleFaq(buttonElement) {
+            const item = buttonElement.parentElement;
+            item.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
